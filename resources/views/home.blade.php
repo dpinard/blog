@@ -14,6 +14,12 @@
                         </div>
                     @endif
 
+                    @if ($msg ?? '')
+                        <div class="alert alert-success" role="alert">
+                            {{ $msg ?? '' }}
+                        </div>
+                    @endif
+
                     @if ($my_posts)
                         <table class="table">
                             <thead class="thead-dark">
@@ -30,7 +36,7 @@
                                     <td>{{$item->content}}</td>
                                     <td>{{$item->id}}</td>
                                     <td>
-                                        <button><a href={{ route('posts.update', ['id' => $item->id]) }}>U</button>
+                                        <button><a href={{ route('posts.form.update', ['id' => $item->id]) }}>U</button>
                                         <button><a href={{ route('posts.delete', ['id' => $item->id]) }}>D</button>
                                     </td>
                                 </tr>

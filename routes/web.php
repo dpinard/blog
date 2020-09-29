@@ -25,5 +25,7 @@ Route::get('/reads_posts', 'postsController@read')->name('posts.read');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/post_update/{id}', 'postsController@update')->name('posts.update');
+Route::get('/post_update/{id}', 'postsController@update')->name('posts.form.update');
+Route::post('/post_update', 'postsController@update_post')->name('posts.update');
+
 Route::get('/post_delete/{id}', 'postsController@delete')->name('posts.delete');

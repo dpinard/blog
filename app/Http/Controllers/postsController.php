@@ -22,15 +22,7 @@ class postsController extends Controller
             'name' => request("name"),
             'content' => request('content'),
             'user_id' => Auth::user()->id  
-        ]);
-        // $post->user_id = Auth::user()->id;
-        // $post-save();
-        
-        // $post->name = $request->input('name');
-        // $post->content = $request->input('content');
-        // $post->user_id = Auth::user()->id;
-        // $post->save();
-        
+        ]);        
         return redirect('/home');
     }
 
@@ -40,12 +32,22 @@ class postsController extends Controller
     }
 
     public function update(Post $post, $id) {
-        $update = $post::where('id', $id)->get();
-        return $update;
+        $update = $post::Id($id)->get();
+        return view('update', [ 'update' => $update ]);
+    }
+
+    public function update_post(Post $post, Request $request) {
+        $id = request('id');
+        $update = 'post edited';
+        $stack['name'] = request('name');
+        $stack['content'] = request('content');
+        $user = $post::Id($id)->Update($stack);
+        
+        return view('home')->with('msg', $update);
     }
 
     public function delete(Post $post, $id) {
-        $delete = $post::where('id', $id)->delete();
+        $delete = $post::Id($id)->delete();
         return redirect('/home');
     }
 }
