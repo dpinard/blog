@@ -5,6 +5,7 @@
 use App\User;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
+use App\Role_user;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,12 +19,18 @@ use Illuminate\Support\Str;
 */
 
 $factory->define(User::class, function (Faker $faker) {
-    return [
+    $user = [
         'name' => 'admin',
         'email' => 'admin@admin.com',
         'email_verified_at' => now(),
         'password' => Hash::make('12345678'), // password
         'remember_token' => Str::random(10),
-        'role_id' => 0
     ];
+
+    Role_user::create([
+        'user_id' => 1,
+        'role_id' => 1,
+    ]);
+
+    return $user;
 });

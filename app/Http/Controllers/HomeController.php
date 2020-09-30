@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
-use App\Role;
 
 class HomeController extends Controller
 {
@@ -33,7 +32,7 @@ class HomeController extends Controller
         foreach ($user->roles as $role) {
             array_push($tab, $role->name);
         }
-        
+
         return view('home')->with('role', $tab);
     }
 }
