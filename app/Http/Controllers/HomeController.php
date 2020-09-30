@@ -26,20 +26,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user_session = Auth::user()->id;
         $tab = [];
-        $user = User::find($user_session);
+        $user_id = Auth::user()->id;
+        $user = User::find($user_id);
 
         foreach ($user->roles as $role) {
             array_push($tab, $role->name);
         }
-
-        // $role = Role::find();
-// 
-        // foreach ($role->users as $key) {
-            // echo($key);
-        // }
-        // dd($tab);
         
         return view('home')->with('role', $tab);
     }
