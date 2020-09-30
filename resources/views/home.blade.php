@@ -4,8 +4,16 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            @if ( $role )
+                <h2>Role</h2>
+                @foreach ($role as $item)
+                    <li>{{$item}}</li>
+                @endforeach
+            @endif
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">
+                    {{ __('Dashboard') }}
+                </div>
 
                 <div class="card-body">
                     @if (session('status'))

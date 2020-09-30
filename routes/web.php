@@ -18,9 +18,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::get('/posts', 'postsController@index')->name('posts.index');
 Route::post('/posts', 'postsController@create')->name('post.create');
+
 Route::get('/reads_posts', 'postsController@read')->name('posts.read');
 
 Route::get('/home', 'HomeController@index')->name('home');
