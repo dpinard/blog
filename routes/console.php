@@ -15,5 +15,8 @@ use Illuminate\Support\Facades\Artisan;
 */
 
 Artisan::command('inspire', function () {
-    $this->comment(Inspiring::quote());
+    $user = App\User::hasPostName('test');
+
+    dd($user->toSql(), $user->get());
+
 })->describe('Display an inspiring quote');

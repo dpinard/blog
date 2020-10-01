@@ -4,9 +4,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            @if ( $role )
+            @if ( $role ?? '' )
                 <h2>Role</h2>
-                @foreach ($role as $item)
+                @foreach ($role ?? '' as $item)
                     <li>{{$item}}</li>
                 @endforeach
             @endif

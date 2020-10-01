@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Auth;
 
 class Post extends Model
 {
@@ -22,4 +24,5 @@ class Post extends Model
             'content' => $params['content']
         ]);
     }
+
 }

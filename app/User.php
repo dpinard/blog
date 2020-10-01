@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -44,4 +45,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function scopeHasPostName(Builder $query, string $name)
+    {
+        $query->whereHas('posts', function (Builder $query) use ($name) {
+            $query->where('name', $name);
+        });
+    }
+
+    public function scopeIsAdmin(Builder $query, $user_id) {
+        $query->whereHas('roles', function (Builder $query) use ($user_id){
+            return $query->where('user_id', $user_id);
+        });
+    }
+    
 }
+
